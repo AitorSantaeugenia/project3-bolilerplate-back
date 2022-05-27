@@ -19,19 +19,13 @@ router.post('/tasks', (req, res, next) => {
 		.catch((err) => res.json(err));
 });
 
-//  GET /api/tasks/:taskId  - Retrieves a specific task by id
-router.get('/tasks/:taskId', (req, res, next) => {
-	const { taskId } = req.params;
-
-	Task.findById(taskId).then((task) => res.json(task)).catch((error) => res.json(error));
-});
-
 // PUT  /api/tasks/:taskId  - Updates a specific task by id
 router.put('/tasks/:taskId', (req, res, next) => {
 	const { taskId } = req.params;
-	// console.log('back', req.params);
-	// console.log('back', req.body.inputTitle);
-	// console.log('back', req.body.inputDescription);
+	const { inputTitle, inputDescription } = req.body;
+	const title = inputTitle;
+	const description = inputDescription;
+	
 
 	if (!mongoose.Types.ObjectId.isValid(taskId)) {
 		res.status(400).json({ message: 'Specified id is not valid' });
@@ -40,10 +34,10 @@ router.put('/tasks/:taskId', (req, res, next) => {
 
 	Task.findByIdAndUpdate(
 		taskId,
-		{ title: req.body.inputTitle, description: req.body.inputDescription },
+		{ title, description },
 		{ new: true }
 	)
-		.then((updatedTask) => {
+		.then(() => {
 			res.send(req.body);
 		})
 		.catch((err) => res.json(err));
