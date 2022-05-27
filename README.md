@@ -1,3 +1,8 @@
+### Instructions
+- npm i
+- create .env file in main folder and add this line: TOKEN_SECRET = super-secret-password
+- npm start
+
 ### API Documentation
 
 We will start our project by first documenting all of the routes and data models for our API. Following best practices we will use _verbs_ to specify the type of operation being done and _nouns_ when naming endpoints.
@@ -11,7 +16,6 @@ We will start our project by first documenting all of the routes and data models
 | GET       | `/api/projects`            | (empty)      | Returns all the projects      |
 | POST      | `/api/projects`            | JSON         | Adds a new project            |
 | GET       | `/api/projects/:projectId` | (empty)      | Returns the specified project |
-| PUT       | `/api/projects/:projectId` | JSON         | Edits the specified project   |
 | DELETE    | `/api/projects/:projectId` | (empty)      | Deletes the specified project |
 
 ##### Task routes
@@ -22,8 +26,6 @@ We will start our project by first documenting all of the routes and data models
 | GET       | `/api/tasks/:taskId` | (empty)      | Returns the specified task |
 | PUT       | `/api/tasks/:taskId` | JSON         | Edits the specified task   |
 | DELETE    | `/api/tasks/:taskId` | (empty)      | Deletes the specified task |
-
-
 
 ##### Auth routes
 
